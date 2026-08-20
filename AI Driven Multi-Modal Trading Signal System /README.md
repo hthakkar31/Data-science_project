@@ -1,96 +1,103 @@
-📊 Analyzing Child Cancer Healthcare Data
+Neural Network & Hyperparameter Tuning
 
 📌 Project Overview
 
-This project analyzes healthcare expenditure data for children with cancer to understand utilization, costs, and financial burdens. It involves:
-
-Data loading, cleaning, and transformation
-
-Statistical summaries of numerical and categorical variables
-
-Exploratory Data Analysis (EDA) with visualizations
-
-Predictive modeling to identify key drivers of financial burden
-
-The goal is to provide insights into the economic challenges faced by families with children battling cancer.
+This project explores binary classification and image classification using deep learning. It begins with the UCI Bank Marketing dataset for predicting customer subscription outcomes, then extends to a Convolutional Neural Network (CNN) on the CIFAR‑10 dataset.
 
 ⚙️ Tech Stack
-Python (Data analysis & modeling)
+Python
 
 Libraries:
 
-NumPy – numerical operations
+NumPy, Pandas – data manipulation
 
-Pandas – data manipulation
+Matplotlib, Seaborn – visualization
 
-Matplotlib & Seaborn – visualization
+Scikit-learn – preprocessing, train/test split
 
-Scikit-learn – preprocessing & machine learning
+TensorFlow/Keras – deep learning models
 
-📂 Data Sources
-Raw healthcare expenditure data (Excel files, 2019–2023)
+Keras Tuner – hyperparameter optimization
 
-Cancer-specific datasets merged with demographic and financial indicators
+📂 Dataset
+1. UCI Bank Marketing Dataset
+Rows: 45,211
 
-Key variables include:
+Features: 17 (categorical + numerical)
 
-Age, Insurance Status, Perceived Health Status
+Target: y → renamed to target (binary: yes/no)
 
-Healthcare Expenditures, Out-of-Pocket Payments, Family Income
+Preprocessing includes:
 
-Poverty Status, Hospital Nights, Prescribed Medicines, Office Visits
+Dropping high‑null columns (poutcome, contact)
+
+One‑Hot Encoding categorical variables
+
+Standardizing numerical features
+
+2. CIFAR‑10 Dataset
+Images: 60,000 (32×32 color images)
+
+Classes: 10 categories (airplane, car, bird, cat, deer, dog, frog, horse, ship, truck)
+
+Preprocessing: normalization (0–1 range), one‑hot encoding of labels
 
 🔄 Workflow
-Data Loading – Import Excel sheets, merge cancer-specific records
+Data Preprocessing
 
-Data Wrangling – Rename columns, handle duplicates, create indicators
+Handle missing values
 
-Feature Engineering –
+Encode categorical variables
 
-Financial burden indicator (OOP > 9% of family income)
+Scale numerical features
 
-Age grouping (Baby/Toddler, Kid, Teenage, Adult, Old)
+Model Architecture (Bank Dataset)
 
-Poverty & insurance status mapping
+Input layer (44 features after preprocessing)
 
-Exploratory Data Analysis (EDA) –
+Dense layer (32 neurons, tanh)
 
-Statistical summaries (numerical & categorical)
+Dropout (20%)
 
-Correlation heatmaps, histograms, scatter plots, bar charts
+Output layer (sigmoid for binary classification)
 
-Financial burden analysis across age, poverty, insurance, health status
+Training & Evaluation
 
-Modeling –
+Optimizers: Adam & SGD (with momentum, Nesterov)
 
-Random Forest Classifier to predict financial burden
+Loss: Binary Crossentropy
 
-Feature importance ranking
+Metrics: Accuracy
 
-StandardScaler applied for numerical features
+Achieved ~89–90% validation accuracy
 
-📊 Key Visualizations
-Correlation heatmap of healthcare variables
+Hyperparameter Tuning (Keras Tuner)
 
-Age distribution histogram
+Tunable units in Dense layers (16–256, 12–120)
 
-Family income distribution histogram
+Tunable learning rate (0.01, 0.001, 0.0001)
 
-Financial burden by age group & poverty status
+Best hyperparameters:
 
-Scatter plot: Family income vs. Out-of-Pocket payments (log scale)
+Units 1: 176
 
-Multi-panel analysis of financial burden across categorical & numerical variables
+Units 2: 36
 
-🤖 Machine Learning Insights
-Random Forest Classifier identifies top predictors of financial burden.
+Learning Rate: 0.001
 
-Features with highest importance:
+CNN on CIFAR‑10
 
-Family income
+Convolutional layers for feature extraction
 
-Out-of-pocket payments
+Pooling layers for dimensionality reduction
 
-Insurance status
+Dense layers for classification
 
-Poverty category
+Output: 10 classes with softmax activation
+
+📊 Visualizations
+Accuracy & loss curves (training vs validation)
+
+Confusion matrix for predictions on test data
+
+CIFAR‑10 sample images
